@@ -10,6 +10,39 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r}
+library(babynames)
+library(tidyverse)
+```
+
+```{r}
+x <- babynames
+
+x2 <- x %>%
+  filter(sex == "M") %>%
+  filter(year >= 1956) %>% 
+  mutate(ends_with_e = ifelse(str_detect(name, "e$"), TRUE, FALSE)) %>%
+  group_by(year, ends_with_e) %>%
+  summarize(prop_e = sum(prop), 
+            sum_e = sum(n)) 
+
+x3 <- x %>%
+  filter(sex == "M") %>%
+  filter(year >= 1956) %>% 
+  mutate(ends_with_a = ifelse(str_detect(name, "a$"), TRUE, FALSE)) %>%
+  group_by(year, ends_with_a) %>%
+  summarize(prop_a = sum(prop), 
+            sum_a = sum(n)) 
+
+x4 <- x %>%
+  filter(sex == "M") %>%
+  filter(year >= 1956) %>% 
+  mutate(ends_with_i = ifelse(str_detect(name, "e$"), TRUE, FALSE)) %>%
+  group_by(year, ends_with_e) %>%
+  summarize(prop_e = sum(prop), 
+            sum_e = sum(n)) 
+```
+
+```{r}
 
 ```
 
