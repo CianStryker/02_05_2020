@@ -36,10 +36,26 @@ x3 <- x %>%
 x4 <- x %>%
   filter(sex == "M") %>%
   filter(year >= 1956) %>% 
-  mutate(ends_with_i = ifelse(str_detect(name, "e$"), TRUE, FALSE)) %>%
-  group_by(year, ends_with_e) %>%
-  summarize(prop_e = sum(prop), 
-            sum_e = sum(n)) 
+  mutate(ends_with_i = ifelse(str_detect(name, "i$"), TRUE, FALSE)) %>%
+  group_by(year, ends_with_i) %>%
+  summarize(prop_i= sum(prop), 
+            sum_i = sum(n)) 
+
+x5 <- x %>%
+  filter(sex == "M") %>%
+  filter(year >= 1956) %>% 
+  mutate(ends_with_o = ifelse(str_detect(name, "o$"), TRUE, FALSE)) %>%
+  group_by(year, ends_with_o) %>%
+  summarize(prop_o = sum(prop), 
+            sum_o = sum(n))
+
+x6 <- x %>%
+  filter(sex == "M") %>%
+  filter(year >= 1956) %>% 
+  mutate(ends_with_u = ifelse(str_detect(name, "u$"), TRUE, FALSE)) %>%
+  group_by(year, ends_with_u) %>%
+  summarize(prop_u = sum(prop), 
+            sum_u = sum(n))
 ```
 
 ```{r}
